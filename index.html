@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Libro de hechizos — Ejercicio FIS ORT." />
+    <title>Spellbook</title>
+    <link rel="icon" href="src/interface/favicon.ico" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link href="src/interface/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="alerts-container"></div>
+    <nav class="navbar navbar-expand">
+      <a class="navbar-brand ps-3" href="#">📖 Spellbook</a>
+      <div class="nav nav-pills" id="nav-tab" role="tablist">
+        <button
+          class="nav-link active me-3"
+          id="nav-add-spell-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-add-spell"
+          type="button"
+          role="tab"
+          aria-controls="nav-add-spell"
+          aria-selected="true"
+        >
+          Agregar hechizo
+        </button>
+        <button
+          class="nav-link"
+          id="nav-spells-list-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-spells-list"
+          type="button"
+          role="tab"
+          aria-controls="nav-spells-list"
+          aria-selected="false"
+        >
+          Libro de hechizos
+        </button>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div
+        class="tab-pane fade show active"
+        id="nav-add-spell"
+        role="tabpanel"
+        aria-labelledby="nav-add-spell-tab"
+      >
+        <div class="container shadow bg-white rounded">
+          <div class="row">
+            <div class="col-sm p-0">
+              <img
+                src="./src/interface/img/spellbook.svg"
+                alt="Libro de hechizos abierto"
+                id="add-spell-image"
+                class="rounded-start"
+              />
+            </div>
+            <div class="col-sm pt-2 px-4">
+              <h1 class="title">Registro de hechizos</h1>
+              <form id="register-form">
+                <div class="row">
+                  <div class="col-sm">
+                    <label for="inp-name" class="form-label">Nombre:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inp-name"
+                      name="name"
+                      placeholder="Ej: Expecto Patronum"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm pt-3">
+                    <label for="inp-description" class="form-label"
+                      >Descripción:</label
+                    >
+                    <textarea
+                      class="form-control"
+                      id="inp-description"
+                      name="description"
+                      rows="3"
+                      placeholder="¿Qué hace el hechizo?"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm pt-3">
+                    <span class="form-label d-block">Primera aparición:</span>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="first-appearance"
+                        id="appearance-book"
+                        value="book"
+                      />
+                      <label
+                        class="form-check-label origin-option"
+                        for="appearance-book"
+                      >
+                        <img
+                          src="./src/interface/img/book.svg"
+                          alt=""
+                          class="origin-icon"
+                        />
+                        Libro
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="first-appearance"
+                        id="appearance-movie"
+                        value="movie"
+                      />
+                      <label
+                        class="form-check-label origin-option"
+                        for="appearance-movie"
+                      >
+                        <img
+                          src="./src/interface/img/movie.svg"
+                          alt=""
+                          class="origin-icon"
+                        />
+                        Película
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="first-appearance"
+                        id="appearance-videogame"
+                        value="videogame"
+                      />
+                      <label
+                        class="form-check-label origin-option"
+                        for="appearance-videogame"
+                      >
+                        <img
+                          src="./src/interface/img/videogame.svg"
+                          alt=""
+                          class="origin-icon"
+                        />
+                        Videojuego
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="first-appearance"
+                        id="appearance-series"
+                        value="series"
+                      />
+                      <label
+                        class="form-check-label origin-option"
+                        for="appearance-series"
+                      >
+                        <img
+                          src="./src/interface/img/series.svg"
+                          alt=""
+                          class="origin-icon"
+                        />
+                        Serie
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-none" id="add-spell-error">
+                  <p class="text-danger pt-2" id="add-spell-error-msg"></p>
+                </div>
+                <div class="row-sm py-3 text-end">
+                  <button id="btn-add" type="button" class="btn btn-primary">
+                    Agregar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-pane fade"
+        id="nav-spells-list"
+        role="tabpanel"
+        aria-labelledby="nav-spells-list-tab"
+      >
+        <h2
+          class="position-absolute top-50 start-50 translate-middle"
+          id="empty-list"
+        >
+          No ha ingresado ningún hechizo :(
+        </h2>
+        <div
+          id="spells"
+          class="container shadow bg-white rounded mt-4 p-2 d-none"
+        >
+          <h1 class="title ps-2">Hechizos:</h1>
+          <div id="counters" class="d-flex flex-wrap gap-3 ps-2 pb-2"></div>
+          <ul id="spells-list" class="list-group"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="src/interface/main.ts" type="module"></script>
+  </body>
+</html>
